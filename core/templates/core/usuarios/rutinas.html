@@ -1,0 +1,98 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block body %}
+
+<section class="portfolio" id="portfolio">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Tus rutinas </h2>
+        
+      
+        <hr class="star-dark mb-5">
+       <div class="row">
+             {% for a in object_list %}
+          <div class="card col-md-6 col-lg-4" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">nombre : {{a.nombre}}</h5>
+              <br>
+              <br>
+              <h5 class="card-title">descripción : {{a.info}}</h5>
+              <br>
+           
+       <a  href
+                 ="{% url 'rutinad' a.id %}
+                 " class="btn btn-info btn-sm"
+                 >Editar</a>
+                 <br>
+                 <br>
+
+                 <a href
+                 ="{% url 'rutinad' a.id %}
+                 " class="btn btn-danger btn-sm"
+                 >Borrar</a>
+                 <br>
+                 <br>
+                 <p><label><input type="checkbox" id="cbox1" value="first_checkbox"
+              class="btn btn-success btn-sm"
+                > Hecha</label><br>
+                 </p>
+                      <br>
+                    </div>  
+                      <hr class="star-dark mb-5"
+                      </div>
+            </div>
+          </div>
+          {%empty%}
+            <h1>No hay datos todavía :(</h1>
+       {%endfor%}
+         
+
+       </div>
+      </div>
+    </section>
+  
+  
+ 
+
+           
+  
+
+
+  <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>Tus Rutinas</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                    
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in object_list %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+               
+                        <td>{{a.nombre}}</td>
+                        <td>{{a.info}}</td>
+                        <td><a href="#" class="btn btn-info btn-sm">Editar</a></td>
+                        <td>
+                 <a href
+                 ="{% url 'rutinad' a.id %}
+                 " class="btn btn-danger btn-sm"
+                 >Eliminar</a>
+                        
+                        
+                        </td>
+                    </tr>
+               {% endfor %}
+               
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

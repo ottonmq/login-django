@@ -1,0 +1,22 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+{% block body %}
+  
+</tbody> %}
+<br>
+<form method="post">
+  {% csrf_token %}
+<h1>Desea eliminar {{object}} ?</h1>
+<button  class="btn btn-danger btn-sm"
+type="submit" name="button">Confirmar</button>
+<a class="btn btn-success btn-sm"
+href="{% url 'rutinas' %}">Cancelar</a>
+</form>
+
+{% endblock %}
+
+
+
+
+
